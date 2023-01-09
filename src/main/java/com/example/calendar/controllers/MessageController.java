@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -42,7 +44,8 @@ public class MessageController {
     }
 
 
-    @PostMapping(value = "mail")
+    @Scheduled(fixedRate = 30000)
+    @Async
     public void pushMessage() {
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
@@ -80,7 +83,6 @@ public class MessageController {
             }
 
         }
-
 
     }
 
