@@ -73,7 +73,6 @@ public class MessageController {
             if(dats.equals(timeStamp)){
 
                 User user = message.getAuthor();
-
                 SimpleMailMessage mes = new SimpleMailMessage();
                 mes.setFrom("testmessage2023@gmail.com");
                 mes.setTo(user.getEmail());
