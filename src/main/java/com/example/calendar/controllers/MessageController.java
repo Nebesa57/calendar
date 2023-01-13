@@ -85,4 +85,10 @@ public class MessageController {
 
     }
 
+    @GetMapping(value = "MessageUser/{id}")
+    public List<Message> MessageUser(@PathVariable("id") Long id){
+        return messageRepository.findAllByAuthor(userRepository.findById(id).get());
+    }
+
+
 }

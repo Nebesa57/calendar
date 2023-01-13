@@ -27,8 +27,6 @@ public class AdminController {
        userRepository.deleteById(id);
     }
 
-
-
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping(value = "userListChange/{id}")
     public void userChange(@PathVariable("id") Long id, @RequestParam String name, @RequestParam String email){
