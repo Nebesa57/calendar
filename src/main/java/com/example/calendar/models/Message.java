@@ -19,7 +19,7 @@ public class Message {
     private String text;
     private String yers;
     private String mounth;
-    private String days ;
+    private String days;
     private String clock;
     private String minuts;
 
