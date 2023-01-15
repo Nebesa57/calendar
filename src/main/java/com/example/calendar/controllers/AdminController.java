@@ -17,7 +17,7 @@ public class AdminController {
 
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping(value = "userList")
+    @GetMapping(value = "userList")
     public List<User> userlist(){
         return userRepository.findAll();
     }
