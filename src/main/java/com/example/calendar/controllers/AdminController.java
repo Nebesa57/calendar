@@ -27,11 +27,15 @@ public class AdminController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping(value = "userListChange/{id}")
-    public void userChange(@PathVariable("id") Long id, @RequestParam String name, @RequestParam String email){
+    @PutMapping(value = "userListChange/{id}")
+    public void userChange(@PathVariable("id") Long id, @RequestParam(defaultValue = "default") String name, @RequestParam(defaultValue = "default") String email){
         User userToUpdate = userRepository.getOne(id);
-        userToUpdate.setUsername(name);
-        userToUpdate.setEmail(email);
+        if(!name.equals("default")){
+            userToUpdate.setUsername(name);
+        }
+        if(!email.equals("default")){
+            userToUpdate.setEmail(email);
+        }
         userRepository.save(userToUpdate);
     }
 }
