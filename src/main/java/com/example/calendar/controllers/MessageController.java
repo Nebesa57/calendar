@@ -44,15 +44,15 @@ public class MessageController {
     }
 
 
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedRate = 60000)
     @Async
     public void pushMessage() {
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("testmessage2023@gmail.com");
-        mailSender.setPassword("moonaafeubedmxqg");
+        mailSender.setUsername("uliafedenko61546@gmail.com");
+        mailSender.setPassword("coscycwtgtzimazs");
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
@@ -71,18 +71,14 @@ public class MessageController {
             String dats = yers+"-"+mounth+"-"+days+" "+clock+":"+minuts;
             String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime());
             if(dats.equals(timeStamp)){
-
                 User user = message.getAuthor();
                 SimpleMailMessage mes = new SimpleMailMessage();
-                mes.setFrom("testmessage2023@gmail.com");
+                mes.setFrom("uliafedenko61546@gmail.com");
                 mes.setTo(user.getEmail());
                 mes.setText(message.getText());
                 mailSender.send(mes);
-
             }
-
         }
-
     }
 
     @GetMapping(value = "MessageUser/{id}")
